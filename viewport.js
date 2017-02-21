@@ -4,6 +4,7 @@
 
         // Local variables
         var vrViewPort;
+        
         var playButton = document.querySelector('#toggleplay');
         var muteButton = document.querySelector('#togglemute');
 
