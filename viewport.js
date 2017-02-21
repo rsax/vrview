@@ -4,7 +4,7 @@
 
         // Local variables
         var vrViewPort;
-        
+
         var playButton = document.querySelector('#toggleplay');
         var muteButton = document.querySelector('#togglemute');
 
@@ -45,7 +45,7 @@
                 vrViewPort = new VRView.Player('.ui-viewport', {
                     width: '100%',
                     height: 480,
-                    video: 'congo_2048.mp4',
+                    video: 'video.mp4',
                     is_stereo: true
                 });
 
