@@ -1,56 +1,64 @@
+(function(Beyon4D) {
 
-var vrView;
-var playButton;
-var muteButton;
+    Beyon4D.ViewPort = function() {
 
-function onLoad() {
+        // Local variables
+        var vrViewPort;
+        var playButton = document.querySelector('#toggleplay');
+        var muteButton = document.querySelector('#togglemute');
 
-  vrView = new VRView.Player('.ui-viewport', {
-    width: '100%',
-    height: 480,
-    video: 'congo_2048.mp4',
-    is_stereo: true,
-    //is_debug: true,
-    //default_heading: 90,
-    //is_yaw_only: true,
-    //is_vr_off: true,
-  });
+        // Private functions
+        var onVRViewReady = function() {
+            if (vrViewPort.isPaused) {
+                playButton.classList.add('paused');
+            } else {
+                playButton.classList.remove('paused');
+            }
+        };
 
-  vrView.on('ready', onVRViewReady);
 
-  playButton = document.querySelector('#toggleplay');
-  muteButton = document.querySelector('#togglemute');
+        var onTogglePlay = function() {
+            if (vrViewPort.isPaused) {
+                vrViewPort.play();
+                playButton.classList.remove('paused');
+            } else {
+                vrViewPort.pause();
+                playButton.classList.add('paused');
+            }
+        }
 
-  playButton.addEventListener('click', onTogglePlay);
-  muteButton.addEventListener('click', onToggleMute);
-}
+        var onToggleMute = function() {
+            var isMuted = muteButton.classList.contains('muted');
+            if (isMuted) {
+                vrViewPort.setVolume(1);
+            } else {
+                vrViewPort.setVolume(0);
+            }
+            muteButton.classList.toggle('muted');
+        }
 
-function onVRViewReady() {
-  if (vrView.isPaused) {
-    playButton.classList.add('paused');
-  } else {
-    playButton.classList.remove('paused');
-  }
-}
+        // Public functions (Reveale)
+        return {
+            init: function() {
 
-function onTogglePlay() {
-  if (vrView.isPaused) {
-    vrView.play();
-    playButton.classList.remove('paused');
-  } else {
-    vrView.pause();
-    playButton.classList.add('paused');
-  }
-}
+                vrViewPort = new VRView.Player('.ui-viewport', {
+                    width: '100%',
+                    height: 480,
+                    video: 'congo_2048.mp4',
+                    is_stereo: true
+                });
 
-function onToggleMute() {
-  var isMuted = muteButton.classList.contains('muted');
-  if (isMuted) {
-    vrView.setVolume(1);
-  } else {
-    vrView.setVolume(0);
-  }
-  muteButton.classList.toggle('muted');
-}
+                vrViewPort.on('ready', onVRViewReady);
 
-window.addEventListener('load', onLoad);
+                playButton.addEventListener('click', onTogglePlay);
+                muteButton.addEventListener('click', onToggleMute);
+
+            }
+        }
+    };
+
+    window.addEventListener('load', function() {
+        var viewPort = new Beyon4D.ViewPort().init();
+    });
+
+})({});

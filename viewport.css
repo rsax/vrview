@@ -1,59 +1,69 @@
 iframe {
-  display: block;
-  border: none;
-  margin: 10px auto;
-  margin-bottom: 0;
-  padding: 0;
-  border: 0;
+    display: block;
+    border: none;
+    margin: 10px auto;
+    margin-bottom: 0;
+    padding: 0;
+    border: 0;
 }
+
 #controls {
-  overflow: hidden;
-  background: #eee;
-  margin: 0 auto;
+    overflow: hidden;
+    background: #eee;
+    margin: 0 auto;
 }
+
 #controls > * {
-  margin: 8px;
-  cursor: pointer;
-  opacity: 0.5;
+    margin: 8px;
+    cursor: pointer;
+    opacity: 0.5;
 }
 
 #controls > *:hover {
-  opacity: 1;
+    opacity: 1;
 }
+
 #toggleplay {
-  float: left;
-  background: url('images/ic_pause_black_24dp.svg');
-  width: 24px;
-  height: 24px;
+    float: left;
+    background: url('images/ic_pause_black_24dp.svg');
+    width: 24px;
+    height: 24px;
 }
+
 #toggleplay.paused {
-  background: url('images/ic_play_arrow_black_24dp.svg');
+    background: url('images/ic_play_arrow_black_24dp.svg');
 }
+
 #togglemute {
-  float: right;
-  background: url('images/ic_volume_up_black_24dp.svg');
-  width: 24px;
-  height: 24px;
+    float: right;
+    background: url('images/ic_volume_up_black_24dp.svg');
+    width: 24px;
+    height: 24px;
 }
+
 #togglemute.muted {
-  background: url('images/ic_volume_off_black_24dp.svg');
+    background: url('images/ic_volume_off_black_24dp.svg');
 }
+
 
 /* MOBILE */
+
 @media screen and (max-width: 700px) {
-  iframe {
-    width: 100%;
-    height: 240px;
-  }
+    iframe {
+        width: 100%;
+        height: 240px;
+    }
 }
 
+
 /* DESKTOP */
+
 @media screen and (min-width: 700px) {
-  iframe {
-    height: 400px;
-    width: 700px;
-  }
-  #controls {
-    width: 700px;
-  }
+    iframe {
+        height: 400px;
+        width: 700px;
+    }
+    #controls {
+        width: 700px;
+    }
 }
